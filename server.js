@@ -3,7 +3,6 @@ import {graphql} from 'graphql';
 import bodyParser from 'body-parser';
 import schema from './schema.js';
 
-
 let app = Express();
 
 app.use(bodyParser.text({ type: 'application/graphql' }));
@@ -16,7 +15,6 @@ app.get('/graphql', (req, res) => {
 });
 
 app.post('/graphql', (req, res) => {
-  console.log(req.body);
   graphql(schema, req.body)
   .then((result) => {
     res.send(JSON.stringify(result, null, 2));
